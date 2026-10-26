@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Artur Ismagilov — Unity Developer</title>
+  <meta name="description" content="Artur Ismagilov — full-cycle Unity developer (C#). Gameplay systems, multiplayer, optimization, shaders; also game design and 3D. Remote: full-time, part-time or contract." />
+  <meta property="og:title" content="Artur Ismagilov — Unity Developer" />
+  <meta property="og:description" content="Full-cycle Unity developer: from prototype to Steam release." />
+  <meta property="og:image" content="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3225880/ab63d2f1c84cbdfa4b3cf330e1c0ee075e8b2b32/header.jpg" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23ff6a2b'/><text x='16' y='22' font-family='monospace' font-size='15' font-weight='700' text-anchor='middle' fill='%230b0d10'>AI</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700&family=Unbounded:wght@500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="progress" aria-hidden="true"><span id="progress"></span></div>
+
+  <header class="topbar">
+    <a class="logo" href="#top"><span class="logo-mark">AI</span><span class="logo-name">artur.ismagilov</span></a>
+    <nav class="nav" id="nav">
+      <a href="#summary" data-i18n="nav.summary">Summary</a>
+      <a href="#work" data-i18n="nav.work">Projects</a>
+      <a href="#experience" data-i18n="nav.exp">Experience</a>
+      <a href="#engineering" data-i18n="nav.eng">Tech</a>
+      <a href="#mobile" data-i18n="nav.mobile">Mobile</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="topbar-right">
+      <a class="btn btn-sm btn-primary cv-link" href="#" target="_blank" rel="noopener"><span aria-hidden="true">↓</span> CV</a>
+      <div class="lang" role="group" aria-label="Language">
+        <button data-lang="en">EN</button><button data-lang="ru">RU</button><button data-lang="es">ES</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap">
+      <div class="hero-text">
+        <div class="id-card">
+          <div class="avatar">
+            <img src="assets/photo.jpg" alt="Artur Ismagilov" onerror="this.remove()" />
+            <span>AI</span>
+          </div>
+          <div>
+            <p class="id-name">Artur Ismagilov</p>
+            <p class="id-role"><b id="p-title">Unity Developer</b> <span class="muted" id="p-also">also game design &amp; 3D / VFX</span></p>
+            <p class="eyebrow"><span class="dot"></span> <span data-i18n="hero.open">Open to work · remote</span></p>
+          </div>
+        </div>
+        <h1 data-i18n-html="hero.title">I build games<br /><span class="accent">end to end</span> —<br />code first.</h1>
+        <p class="lead" data-i18n="hero.lead"></p>
+        <div class="role-legend">
+          <span class="chip chip-dev">DEV</span><span class="chip-label" data-i18n="hero.dev">Unity / C# — main focus</span>
+          <span class="chip chip-gd">GD</span><span class="chip-label" data-i18n="hero.gd">Game design</span>
+          <span class="chip chip-3d">3D</span><span class="chip-label" data-i18n="hero.3d">3D / VFX</span>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary cv-link" href="#" target="_blank" rel="noopener"><span aria-hidden="true">↓</span> <span data-i18n="cv.download">Download CV</span></a>
+          <a class="btn" href="#work" data-i18n="hero.see">See projects</a>
+          <a class="btn gh-link" href="#" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <div class="hero-code" aria-hidden="true">
+        <div class="code-head"><span></span><span></span><span></span><em>ArturIsmagilov.cs</em></div>
+<pre><code><span class="k">public sealed class</span> <span class="t">ArturIsmagilov</span> : <span class="t">UnityDeveloper</span>
+{
+  <span class="k">public</span> <span class="t">Role</span>[] AlsoCovers =&gt; <span class="k">new</span>[] {
+    <span class="t">Role</span>.GameDesign, <span class="t">Role</span>.Art3D, <span class="t">Role</span>.VFX
+  };
+
+  <span class="k">public string</span>[] Stack =&gt; <span class="k">new</span>[] {
+    <span class="s">"C#"</span>, <span class="s">"Unity 6"</span>, <span class="s">"URP"</span>, <span class="s">"NGO"</span>, <span class="s">"HLSL"</span> };
+
+  <span class="k">public int</span> ReleasedOnSteam =&gt; <span class="n">1</span>;  <span class="c">// solo</span>
+  <span class="k">public int</span> InDevelopment   =&gt; <span class="n">2</span>;
+  <span class="k">public int</span> MobileTitles    =&gt; <span class="n">12</span>;
+
+  <span class="k">public async</span> <span class="t">UniTask</span> Build(<span class="t">Idea</span> idea)
+  {
+    <span class="k">var</span> game = <span class="k">await</span> Prototype(idea);
+    <span class="k">while</span> (!game.IsFun) game = Iterate(game);
+    <span class="k">await</span> Ship(game);
+  }
+}<span class="caret"></span></code></pre>
+      </div>
+    </section>
+
+    <section id="summary" class="wrap summary">
+      <div class="summary-card">
+        <div class="summary-head">
+          <h2 class="mono" data-i18n="sum.title">// at a glance</h2>
+          <a class="btn btn-sm cv-link" href="#" target="_blank" rel="noopener"><span aria-hidden="true">↓</span> <span data-i18n="cv.pdf">CV · PDF</span></a>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>5+</b><span data-i18n="stat.years">years in gamedev</span></div>
+          <div class="stat"><b>1</b><span data-i18n="stat.released">Steam game released solo</span></div>
+          <div class="stat"><b>2</b><span data-i18n="stat.indev">Steam games in development</span></div>
+          <div class="stat"><b>12</b><span data-i18n="stat.mobile">mobile titles</span></div>
+        </div>
+        <dl class="glance" id="glance"></dl>
+        <div class="jump">
+          <span class="mono muted" data-i18n="sum.jump">jump to:</span>
+          <a href="#work" data-i18n="nav.work">Projects</a>
+          <a href="#experience" data-i18n="nav.exp">Experience</a>
+          <a href="#engineering" data-i18n="nav.eng">Tech</a>
+          <a href="#stack" data-i18n="nav.stack">Stack</a>
+          <a href="#mobile" data-i18n="nav.mobile">Mobile</a>
+          <a href="#contact" data-i18n="nav.contact">Contact</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="section wrap">
+      <div class="section-head">
+        <span class="idx">01</span>
+        <h2 data-i18n="work.title">Selected work</h2>
+        <p data-i18n="work.sub"></p>
+      </div>
+      <div id="featured" class="featured"></div>
+    </section>
+
+    <section id="experience" class="section wrap">
+      <div class="section-head">
+        <span class="idx">02</span>
+        <h2 data-i18n="exp.title">Experience</h2>
+        <p data-i18n="exp.sub"></p>
+      </div>
+      <h3 class="tl-group mono" data-i18n="exp.jobs">// employment</h3>
+      <ol id="timeline-jobs" class="timeline"></ol>
+      <h3 class="tl-group mono" data-i18n="exp.own">// own projects</h3>
+      <ol id="timeline-own" class="timeline timeline-own"></ol>
+    </section>
+
+    <section id="engineering" class="section wrap">
+      <div class="section-head">
+        <span class="idx">03</span>
+        <h2 data-i18n="eng.title">How I build</h2>
+        <p data-i18n="eng.sub"></p>
+      </div>
+      <div id="eng-grid" class="eng-grid"></div>
+    </section>
+
+    <section id="stack" class="section wrap">
+      <div class="section-head">
+        <span class="idx">04</span>
+        <h2 data-i18n="stack.title">Stack</h2>
+      </div>
+      <div id="stack-grid" class="stack-grid"></div>
+    </section>
+
+    <section id="mobile" class="section wrap">
+      <div class="section-head">
+        <span class="idx">05</span>
+        <h2 data-i18n="mobile.title">Mobile games</h2>
+        <p data-i18n="mobile.sub"></p>
+      </div>
+      <div class="metrics" id="metrics"></div>
+      <div id="mobile-grid" class="mobile-grid"></div>
+    </section>
+
+    <section id="contact" class="section wrap contact">
+      <div class="contact-card">
+        <span class="idx">06</span>
+        <p class="eyebrow"><span class="dot"></span> <span data-i18n="contact.eyebrow">Let's get in touch</span></p>
+        <h2 data-i18n-html="contact.title"></h2>
+        <p class="contact-roles" data-i18n-html="contact.roles"></p>
+        <div class="hero-actions">
+          <a class="btn btn-primary tg-link" href="#" target="_blank" rel="noopener" data-i18n="contact.tg">Write on Telegram</a>
+          <a class="btn li-link" href="#" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn gh-link" href="#" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn cv-link" href="#" target="_blank" rel="noopener"><span aria-hidden="true">↓</span> <span data-i18n="cv.download">Download CV</span></a>
+          <a class="btn" id="mail-link" href="#" hidden>Email</a>
+        </div>
+        <dl class="facts" id="facts"></dl>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer wrap">
+    <span>© <span id="year"></span> Artur Ismagilov</span>
+    <span class="mono" data-i18n="footer">built by hand · no engine required</span>
+  </footer>
+
+  <a href="#top" class="to-top" id="to-top" aria-label="Back to top">↑</a>
+
+  <dialog id="modal" class="modal">
+    <button class="modal-close" aria-label="Close">✕</button>
+    <div class="modal-body" id="modal-body"></div>
+  </dialog>
+
+  <dialog id="lightbox" class="lightbox">
+    <button class="lb-close" aria-label="Close">✕</button>
+    <button class="lb-nav lb-prev" aria-label="Previous">‹</button>
+    <div class="lb-stage" id="lb-stage"></div>
+    <button class="lb-nav lb-next" aria-label="Next">›</button>
+    <div class="lb-count mono" id="lb-count"></div>
+  </dialog>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

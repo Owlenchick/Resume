@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Artur Ismagilov — CV</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  @page { size: A4; margin: 12mm 13mm 11mm; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #fff; }
+  body { font: 9.6pt/1.42 "Inter", "Helvetica Neue", Arial, sans-serif; color: #1b1e24; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { width: 184mm; }
+  a { color: inherit; text-decoration: none; }
+  .accent { color: #e2561a; }
+  header { display: grid; grid-template-columns: 26mm 1fr; gap: 6mm; align-items: center; padding-bottom: 5mm; border-bottom: 2px solid #1b1e24; }
+  header img { width: 26mm; height: 26mm; border-radius: 5mm; object-fit: cover; border: 1.5px solid #e2561a; }
+  h1 { margin: 0; font-size: 22pt; font-weight: 800; letter-spacing: -.02em; line-height: 1.05; }
+  .title { margin: 1.5mm 0 2.5mm; font-size: 11.5pt; font-weight: 600; }
+  .title span { color: #6b7280; font-weight: 500; }
+  .contacts { display: flex; flex-wrap: wrap; gap: 1mm 4mm; font-size: 8.6pt; color: #374151; }
+  .contacts b { color: #6b7280; font-weight: 500; }
+  .cols { display: grid; grid-template-columns: 1fr 62mm; gap: 7mm; margin-top: 5mm; }
+  h2 { margin: 0 0 2.2mm; font-size: 8.4pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #e2561a; }
+  section { margin-bottom: 4.6mm; break-inside: avoid; }
+  p { margin: 0 0 1.6mm; }
+  .job { margin-bottom: 3.2mm; break-inside: avoid; }
+  .job-h { display: flex; justify-content: space-between; gap: 3mm; align-items: baseline; }
+  .job-h h3 { margin: 0; font-size: 10.2pt; font-weight: 700; }
+  .job-h time { flex: none; font-size: 8.4pt; color: #6b7280; white-space: nowrap; }
+  .meta { font-size: 8.4pt; color: #6b7280; margin: .3mm 0 1mm; }
+  ul { margin: 0; padding-left: 4mm; }
+  li { margin: 0 0 .6mm; }
+  .note { font-size: 8.4pt; color: #6b7280; font-style: italic; }
+  .sub { margin: 3.6mm 0 2mm; font-size: 8pt; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: .08em; }
+  .proj { margin-bottom: 2.6mm; break-inside: avoid; }
+  .proj h3 { margin: 0; font-size: 9.8pt; font-weight: 700; display: inline; }
+  .proj .st { font-size: 8.2pt; color: #6b7280; }
+  .proj .url { font-size: 8.2pt; color: #e2561a; }
+  aside section { margin-bottom: 4.2mm; }
+  .facts div { margin-bottom: 1.6mm; }
+  .facts dt { font-size: 7.8pt; color: #6b7280; text-transform: uppercase; letter-spacing: .06em; }
+  .facts dd { margin: 0; }
+  dl { margin: 0; }
+  .skills h4 { margin: 0 0 .6mm; font-size: 8.6pt; font-weight: 700; }
+  .skills p { font-size: 8.6pt; color: #374151; margin-bottom: 2mm; }
+  .hl li { font-size: 8.8pt; }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6mm; }
+  .stats div { border: 1px solid #e5e7eb; border-radius: 2mm; padding: 1.6mm 2.2mm; }
+  .stats b { display: block; font-size: 13pt; font-weight: 800; line-height: 1.1; }
+  .stats span { font-size: 7.6pt; color: #6b7280; line-height: 1.2; display: block; }
+  @media screen { body { background: #e5e7eb; } .page { width: 210mm; min-height: 297mm; padding: 12mm 13mm; margin: 10mm auto; background: #fff; box-shadow: 0 2mm 8mm #0002; } }
+</style>
+</head>
+<body>
+<div class="page" id="cv"></div>
+<script src="../js/data.js"></script>
+<script>
+(() => {
+  const qs = new URLSearchParams(location.search);
+  const lang = ["en", "ru", "es"].includes(qs.get("lang")) ? qs.get("lang") : "en";
+  document.documentElement.lang = lang;
+  if (lang === "es") document.body.style.fontSize = "9.1pt";
+  const t = (v) => (v && typeof v === "object" && !Array.isArray(v) ? v[lang] ?? v.en : v ?? "");
+  const esc = (s = "") => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const T = {
+    en: { summary: "Summary", exp: "Experience", jobs: "Employment", own: "Own projects (in parallel with main work)", proj: "Selected projects", hl: "Engineering highlights", skills: "Skills", facts: "Details", loc: "Location", fmt: "Work format", lang: "Languages", edu: "Education", portfolio: "Portfolio",
+          sum: "Full-cycle Unity developer with 5+ years in game development. I've taken projects from prototype to Steam release: code, game design, 3D, VFX and publisher pitches. Strongest in C# gameplay systems, multiplayer (Netcode for GameObjects), performance and graphics optimization. Looking to commit to one big project with a strong team.",
+          s1: "years in gamedev", s2: "Steam game released solo", s3: "Steam games in development", s4: "mobile titles",
+          mobile: "Mobile (VA Gamedev, 2021–2024): 12 hyper-casual & idle titles tested with publishers Freeplay and Moonee — average CPI ≈ $0.30, retention ≈ 27–30%." },
+    ru: { summary: "О себе", exp: "Опыт", jobs: "Работа", own: "Свои проекты (параллельно с основной работой)", proj: "Избранные проекты", hl: "Технические решения", skills: "Навыки", facts: "Детали", loc: "Город", fmt: "Формат работы", lang: "Языки", edu: "Образование", portfolio: "Портфолио",
+          sum: "Разработчик полного цикла на Unity, 5+ лет в геймдеве. Вёл проекты от прототипа до релиза в Steam: код, геймдизайн, 3D, VFX и работа с издателями. Сильнее всего в геймплейных системах на C#, мультиплеере (Netcode for GameObjects), оптимизации производительности и графики. Хочу вкладываться в один большой проект с сильной командой.",
+          s1: "лет в геймдеве", s2: "игра в Steam, выпущена соло", s3: "игры в Steam в разработке", s4: "мобильных игр",
+          mobile: "Мобайл (VA Gamedev, 2021–2024): 12 гиперказуальных и idle-игр, тесты с издателями Freeplay и Moonee — средний CPI ≈ $0,30, retention ≈ 27–30%." },
+    es: { summary: "Perfil", exp: "Experiencia", jobs: "Empleo", own: "Proyectos propios (en paralelo al trabajo principal)", proj: "Proyectos destacados", hl: "Aspectos técnicos", skills: "Habilidades", facts: "Datos", loc: "Ubicación", fmt: "Modalidad", lang: "Idiomas", edu: "Educación", portfolio: "Portafolio",
+          sum: "Desarrollador Unity de ciclo completo con más de 5 años en la industria. He llevado proyectos del prototipo al lanzamiento en Steam: código, diseño de juego, 3D, VFX y presentaciones a editores. Mi fuerte: sistemas de gameplay en C#, multijugador (Netcode for GameObjects), optimización de rendimiento y gráficos. Busco comprometerme con un gran proyecto junto a un equipo fuerte.",
+          s1: "años en gamedev", s2: "juego en Steam lanzado en solitario", s3: "juegos de Steam en desarrollo", s4: "juegos móviles",
+          mobile: "Móvil (VA Gamedev, 2021–2024): 12 juegos hipercasuales e idle probados con los editores Freeplay y Moonee — CPI medio ≈ 0,30 $, retención ≈ 27–30%." },
+  }[lang];
+
+  const P = window.PROFILE;
+  const short = (u) => u.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+  const site = qs.get("site");
+
+  const job = (e) => `
+    <div class="job">
+      <div class="job-h"><h3>${esc(t(e.role))} · <span class="accent">${esc(e.company)}</span></h3><time>${esc(t(e.period))}</time></div>
+      <div class="meta">${esc(t(e.meta))}${e.project ? " · " + esc(t(e.project)) : ""}</div>
+      <p>${esc(t(e.text))}</p>
+      ${e.note ? `<div class="note">${esc(t(e.note))}</div>` : ""}
+    </div>`;
+
+  const proj = (p, n) => `
+    <div class="proj">
+      <h3>${esc(p.title)}</h3> <span class="st">— ${esc(t(p.position))} · ${esc(t(p.status))}</span>
+      <ul>${p.work.slice(0, n).map((w) => `<li>${esc(t(w))}</li>`).join("")}</ul>
+      ${p.links[0] ? `<div class="url">${esc(short(p.links[0].url))}</div>` : ""}
+    </div>`;
+  const F = Object.fromEntries(window.FEATURED.map((p) => [p.slug, p]));
+
+  document.getElementById("cv").innerHTML = `
+    <header>
+      <img src="../assets/photo.jpg" alt="" onerror="this.style.visibility='hidden'" />
+      <div>
+        <h1>Artur Ismagilov</h1>
+        <div class="title">${esc(t(P.title))} <span>— ${esc(t(P.also))}</span></div>
+        <div class="contacts">
+          <span><b>Telegram</b> @${esc(P.telegram)}</span>
+          <span><b>LinkedIn</b> ${esc(short(P.linkedin))}</span>
+          <span><b>GitHub</b> ${esc(short(P.github))}</span>
+          ${P.email ? `<span><b>Email</b> ${esc(P.email)}</span>` : ""}
+          ${site ? `<span><b>${T.portfolio}</b> ${esc(short(site))}</span>` : ""}
+        </div>
+      </div>
+    </header>
+    <div class="cols">
+      <main>
+        <section><h2>${T.summary}</h2><p>${T.sum}</p></section>
+        <section>
+          <h2>${T.exp}</h2>
+          ${window.EXPERIENCE.filter((e) => e.type !== "own").map(job).join("")}
+          <div class="sub">${T.own}</div>
+          ${window.EXPERIENCE.filter((e) => e.type === "own").map(job).join("")}
+        </section>
+        <section>
+          <h2>${T.proj}</h2>
+          ${proj(F["space-out-together"], 3)}
+          ${proj(F["aldo"], 4)}
+          ${proj(F["lenin-street-geek-shop"], 3)}
+          ${proj(F["sit-or-die"], 2)}
+          <p class="meta">${T.mobile}</p>
+        </section>
+      </main>
+      <aside>
+        <section>
+          <div class="stats">
+            <div><b>5+</b><span>${T.s1}</span></div><div><b>1</b><span>${T.s2}</span></div>
+            <div><b>2</b><span>${T.s3}</span></div><div><b>12</b><span>${T.s4}</span></div>
+          </div>
+        </section>
+        <section>
+          <h2>${T.facts}</h2>
+          <dl class="facts">
+            <div><dt>${T.loc}</dt><dd>${esc(t(P.location))} · UTC−3</dd></div>
+            <div><dt>${T.fmt}</dt><dd>${esc(t(P.format))}</dd></div>
+            <div><dt>${T.lang}</dt><dd>${esc(t(P.languages))}</dd></div>
+            <div><dt>${T.edu}</dt><dd>${esc(t(P.education))}</dd></div>
+          </dl>
+        </section>
+        <section class="skills">
+          <h2>${T.skills}</h2>
+          ${window.STACK.map((s) => `<h4>${esc(t(s.group))}</h4><p>${s.items.map((i) => esc(t(i))).join(", ")}</p>`).join("")}
+        </section>
+        <section>
+          <h2>${T.hl}</h2>
+          <ul class="hl">${window.ENGINEERING.map((c) => `<li><b>${esc(t(c.title))}.</b> ${esc(t(c.text)).split(". ")[0].replace(/\.+$/, "")}.</li>`).join("")}</ul>
+        </section>
+      </aside>
+    </div>`;
+  document.title = `Artur Ismagilov — CV (${lang.toUpperCase()})`;
+})();
+</script>
+</body>
+</html>
